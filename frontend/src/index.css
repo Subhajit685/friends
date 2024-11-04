@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for all webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for Firefox */
+  * {
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* Optional: Ensure content is still scrollable */
+  .scrollable-element {
+    overflow: hidden; /* Hide overflow by default */
+    overflow-y: auto; /* Allow vertical scrolling if needed */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+  }
+
+
+  /* Spinner.css */
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: rgb(229, 236, 240);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+  
