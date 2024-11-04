@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(urlencoded({extended : false}))
 app.use(cookieparser())
 app.use(cors({
-    origin : "http://localhost:5173",
+    origin : "https://friends-kfbr.onrender.com",
     credentials : true
 }))
 

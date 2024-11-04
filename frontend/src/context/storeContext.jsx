@@ -4,7 +4,7 @@ export const StoreContext = createContext(null)
 
 const ContextProvider = ({ children }) => {
 
-    const url = "http://localhost:4000"
+    const url = "https://friends-kfbr.onrender.com"
     const [user, setuser] = useState(null)
     const [color, setcolor] = useState('light')
     const [showcomment, setshowcomment] = useState(false)

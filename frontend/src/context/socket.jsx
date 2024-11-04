@@ -12,7 +12,7 @@ const SocketProvider = ({children}) =>{
 
     useEffect(()=>{
         if(user){
-            const socket = io("http://localhost:4000",{
+            const socket = io("https://friends-kfbr.onrender.com",{
                 query : {
                     userID : user._id
                 }
