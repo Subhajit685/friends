@@ -1,10 +1,19 @@
 import React, { useContext, useEffect } from 'react'
 import { StoreContext } from '../context/storeContext'
 import { PiUserCircleThin } from 'react-icons/pi';
+import { useNavigate } from 'react-router-dom';
 
 function Notification() {
 
   const { user, shownotification, setshownotification, url, notificationCount, setnotificationCount, lengthCount, setlengthCount, notificationLength, setnotificationLength } = useContext(StoreContext)
+
+  const navigate = useNavigate()
+
+  const hendleProfile = (id) =>{
+    if(id){
+      navigate(`/${id}/profile`)
+    }
+  }
 
   useEffect(() => {
 
@@ -43,7 +52,7 @@ function Notification() {
           {
             shownotification ? (shownotification.map((item, index) => {
               return <div key={index} className='flex gap-4 items-center py-4 px-4'>
-                <div>{item.userImage ? <div className='w-12 h-12 rounded-full border overflow-hidden'><img src={item.userImage} alt="image" className='w-full h-full object-center object-cover' /></div> : <div className='text-6xl'><PiUserCircleThin /></div>}</div>
+                <div className='cursor-pointer' onClick={()=> hendleProfile(item?.id)}>{item.userImage ? <div className='w-12 h-12 rounded-full border overflow-hidden'><img src={item.userImage} alt="image" className='w-full h-full object-center object-cover' /></div> : <div className='text-6xl'><PiUserCircleThin /></div>}</div>
                 <div>{item.message || item}</div>
               </div>
             })) : (<div>No notification</div>)

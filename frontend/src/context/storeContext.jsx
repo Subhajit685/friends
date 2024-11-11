@@ -23,6 +23,11 @@ const ContextProvider = ({ children }) => {
     const [popData, setpopData] = useState(null)
     const [notificationLength, setnotificationLength] = useState(0)
     const [lengthCount, setlengthCount] = useState(0)
+    const [allComment, setAllcomment] = useState([])
+    const [getPost, setgetpost] = useState(true)
+    const [profiledataLoading, setprofiledataloading] = useState(false)
+    const [followersShow, setfollowersShow] = useState(false)
+    const [followingShow, setfollowingShow] = useState(false)
 
     const getUser = async () => {
         try {
@@ -56,7 +61,6 @@ const ContextProvider = ({ children }) => {
             })
 
             const data = await res.json()
-            setcomment("")
             return data
         } catch (error) {
             console.log("addcomment", error)
@@ -116,6 +120,7 @@ const ContextProvider = ({ children }) => {
     }
 
     const profiledata = async (id) => {
+        setprofiledataloading(true)
         try {
             const res = await fetch(`${url}/api/user/profile/${id}`, {
                 method: "GET",
@@ -126,7 +131,10 @@ const ContextProvider = ({ children }) => {
             })
 
             const data = await res.json()
+            setprofiledataloading(false)
             if (data.success) {
+                setfollowingShow(false)
+                setfollowersShow(false)
                 setfollewing(data.user.following.includes(user._id))
                 setfollowers(data.user.followers.includes(user._id))
                 setuserData(data.user)
@@ -220,7 +228,7 @@ const ContextProvider = ({ children }) => {
         }
       }
     return (
-        <StoreContext.Provider value={{ url, user, setuser, getUser, color, setcolor, showcomment, setshowcomment, ispopup, setpopup, commentpopup, setcommentpopup, showCreate, setshowCreate, selectPostcomment, setselectPostcomment, addComment, like, dislike, bookmark, allpost, setallpost, profiledata, userData, setuserData, hendleSuggestion, suggestionUser, setsuggestionuser, follewing, setfollewing, followers, setfollowers, messages, setmessages, shownotification, setshownotification, notificationCount, setnotificationCount, popData, setpopData, deletePost, hendletoFollow, getNotification, notificationLength, setnotificationLength, lengthCount, setlengthCount }}>
+        <StoreContext.Provider value={{ url, user, setuser, getUser, color, setcolor, showcomment, setshowcomment, ispopup, setpopup, commentpopup, setcommentpopup, showCreate, setshowCreate, selectPostcomment, setselectPostcomment, addComment, like, dislike, bookmark, allpost, setallpost, profiledata, userData, setuserData, hendleSuggestion, suggestionUser, setsuggestionuser, follewing, setfollewing, followers, setfollowers, messages, setmessages, shownotification, setshownotification, notificationCount, setnotificationCount, popData, setpopData, deletePost, hendletoFollow, getNotification, notificationLength, setnotificationLength, lengthCount, setlengthCount, allComment, setAllcomment, getPost, setgetpost, profiledataLoading, setprofiledataloading, followersShow, setfollowersShow, followingShow, setfollowingShow }}>
             {children}
         </StoreContext.Provider>
     )

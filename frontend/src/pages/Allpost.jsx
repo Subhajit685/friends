@@ -4,7 +4,7 @@ import Showpost from '../components/Showpost'
 import Spinner from '../components/Spinner'
 
 function Allpost() {
-  const { color, url, allpost, setallpost, setuser, setcolor, showCreate, setshowCreate, user, profiledata, notificationCount, setnotificationCount } = useContext(StoreContext)
+  const { color, url, allpost, setallpost, setuser, setcolor, showCreate, setshowCreate, user, profiledata, notificationCount, setnotificationCount, getPost, setgetpost } = useContext(StoreContext)
   const [loading, setloading] = useState(false)
 
   const showllPost = async () => {
@@ -29,7 +29,10 @@ function Allpost() {
   }
 
   useEffect(() => {
-    showllPost()
+    if(getPost){
+      showllPost()
+      setgetpost(false)
+    }
   }, [])
   return (
     <div className={`h-full overflow-y-auto`}>

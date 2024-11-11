@@ -10,6 +10,8 @@ const SocketProvider = ({children}) =>{
     const [socket, setsocket] = useState(null)
     const [onlineUser, setonlineuser] = useState([])
 
+    // https://friends-kfbr.onrender.com
+
     useEffect(()=>{
         if(user){
             const socket = io("https://friends-kfbr.onrender.com",{

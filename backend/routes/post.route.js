@@ -49,7 +49,8 @@ route.post("/newpost", userProtected, upload.single("postImage"), async (req, re
 
         const notification = {
             message: `${user.userName} add a post`,
-            userImage: user?.profileImage
+            userImage: user?.profileImage,
+            id : user._id
         }
 
         const users = await User.find({ _id: { $ne: req.user._id } }).select("-password")
@@ -116,7 +117,8 @@ route.post("/like/:id", userProtected, async (req, res) => {
 
         const notification = {
             message: `${user.userName} like on your post ${post.caption}`,
-            userImage: user?.profileImage
+            userImage: user?.profileImage,
+            id : user._id
         }
 
         const postUser = await User.findById(post.postAuthor)
@@ -196,7 +198,8 @@ route.post("/addcomment/:id", userProtected, async (req, res) => {
 
         const notification = {
             message: `${user.userName} comment on your post ${post.caption}`,
-            userImage: user?.profileImage
+            userImage: user?.profileImage,
+            id : user._id
         }
 
         const postUser = await User.findById(post.postAuthor)

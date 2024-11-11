@@ -99,6 +99,8 @@ route.get("/profile/:id", userProtected, async (req, res) => {
 
         await user.populate("posts")
         await user.populate("bookmarks")
+        await user.populate("followers")
+        await user.populate("following")
 
         return res.status(200).json({ success: true, user })
     } catch (error) {
@@ -206,8 +208,8 @@ route.post("/followOrUnfollow/:id", userProtected, async (req, res) => {
             // socket io
 
             const notification = user.following.includes(id) ?
-                { message: `${user?.userName} follow back you. You can started message now`, userImage: user?.profileImage } :
-                { message: `${user?.userName} started following you. If you know follow back.`, userImage: user?.profileImage }
+                ({ message: `${user?.userName} follow back you. You can started message now`, userImage: user?.profileImage, id : user._id }) :
+                ({ message: `${user?.userName} started following you. If you know follow back.`, userImage: user?.profileImage, id : user._id })
 
 
 
@@ -281,29 +283,29 @@ route.get("/notofocation", userProtected, async (req, res) => {
         }
 
         if (!user.notification) {
-            return res.status(200).json({ success: true, notification: [], notificationLength : 0 })
+            return res.status(200).json({ success: true, notification: [], notificationLength: 0 })
         }
 
-        return res.status(200).json({ success: true, notification: user.notification, notificationLength : user.notoficationLength })
+        return res.status(200).json({ success: true, notification: user.notification, notificationLength: user.notoficationLength })
     } catch (error) {
         console.log("notofocation", error)
         return res.status(500).json({ success: false, message: "Internal server error on notofocation" })
     }
 })
 
-route.post("/setnotification", userProtected, async(req, res)=>{
+route.post("/setnotification", userProtected, async (req, res) => {
     try {
-        const {count} = req.body
+        const { count } = req.body
         const user = await User.findById(req.user.id)
 
-        if(!user){
+        if (!user) {
             return res.status(400).json({ success: false, message: "User not found" })
         }
 
         user.notoficationLength = count
         await user.save()
 
-        return res.status(200).json({ success: true, notification: user.notification, notificationLength : user.notoficationLength })
+        return res.status(200).json({ success: true, notification: user.notification, notificationLength: user.notoficationLength })
 
     } catch (error) {
         console.log("notofocation", error)

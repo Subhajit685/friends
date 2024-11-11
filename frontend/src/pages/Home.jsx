@@ -228,7 +228,7 @@ function Home() {
 
                     {/* //trende */}
 
-                    <Link to={"/trend"} className='flex items-center gap-2 cursor-pointer'>
+                    {/* <Link to={"/trend"} className='flex items-center gap-2 cursor-pointer'>
                         <div className={`text-3xl ${color === "light" ? "text-black" : "text-white"}`}>
                             {
                                 location.pathname === "/trend" ? <span className='text-2xl'><BsGraphUpArrow /></span> : <span className='text-2xl'><GoGraph /></span>
@@ -239,7 +239,7 @@ function Home() {
                                 location.pathname === "/trend" ? <span className='text-lg font-bold'>Trends</span> : <span className='text-lg'>Trends</span>
                             }</div>
                         </div>
-                    </Link>
+                    </Link> */}
 
 
                     {/* // profile  */}

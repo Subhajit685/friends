@@ -9,10 +9,9 @@ import { PiUserCircleThin } from 'react-icons/pi'
 
 
 function ShowComment({ selectPostcomment }) {
-  const { color, setshowcomment, showcomment, ispopup, setpopup, commentpopup, setcommentpopup, addComment, url, comment, setcomment, user, setpopData } = useContext(StoreContext)
+  const { color, setshowcomment, showcomment, ispopup, setpopup, commentpopup, setcommentpopup, addComment, url, comment, setcomment, user, setpopData, allComment, setAllcomment } = useContext(StoreContext)
 
   const [loading, setloading] = useState(false)
-  const [allComment, setAllcomment] = useState([])
   const [postUserData, setpostuserData] = useState({})
 
   const hendleComment = async () => {

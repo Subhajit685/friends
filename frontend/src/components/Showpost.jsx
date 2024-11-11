@@ -23,6 +23,7 @@ function Showpost({ post }) {
     const [showbookmark, setshowbookmark] = useState(user?.bookmarks.includes(post._id) || false)
     const navigate = useNavigate()
     const [comment, setcomment] = useState("")
+    const [commentLength, setcommentlength] = useState([])
 
     const hendleShowComment = () => {
         setshowcomment(true)
@@ -37,6 +38,7 @@ function Showpost({ post }) {
         setcomment("")
         if (data.success) {
             setAllcomment([data.newComment, ...allComment])
+            setcommentlength([data.newComment, ...commentLength])
         }
     }
 
@@ -81,6 +83,7 @@ function Showpost({ post }) {
 
     useEffect(() => {
         setshowLike(post?.likes)
+        setcommentlength(post?.comments)
     }, [])
 
     return (
@@ -130,7 +133,7 @@ function Showpost({ post }) {
                 <span className={`${color === "light" ? "text-black font-bold" : "text-white font-bold"}`}>{post.postAuthor.userName}.</span> <span>{post?.caption}</span>
             </div>
             <div className='px-4 text-slate-400 text-sm md:text-base cursor-pointer' onClick={hendleShowComment}>
-                View All {post?.comments.length} comments
+                View All {commentLength.length} comments
             </div>
 
             <div className='flex items-center px-4 py-2 pb-4'>

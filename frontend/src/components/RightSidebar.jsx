@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import SuggestionProfile from './SuggestionProfile'
 
 function RightSidebar() {
-  const { color, url, user, hendleSuggestion, suggestionUser, setsuggestionuser } = useContext(StoreContext)
+  const { color, url, user, hendleSuggestion, suggestionUser, setsuggestionuser, followers } = useContext(StoreContext)
 
 
 
@@ -31,8 +31,10 @@ function RightSidebar() {
         <div className='py-4 font-bold text-slate-400'>Friends suggestion for you</div>
         <div className=''>
           {
-            suggestionUser ? suggestionUser?.map((user, index) => {
-              return <SuggestionProfile key={index} user={user} />
+            suggestionUser ? suggestionUser?.map((User, index) => {
+              return <div key={index}>{
+                User.followers.includes(user._id.toString()) ? (<div></div>) : (<SuggestionProfile User={User} />)
+              }</div>
             })
               : <div className='text-slate-400'>No suggestion</div>
           }

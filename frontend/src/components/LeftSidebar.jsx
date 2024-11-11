@@ -121,7 +121,7 @@ function LeftSidebar() {
 
                     {/* //trende */}
 
-                    <Link to={"/trend"} className='flex items-center gap-2 cursor-pointer'>
+                    {/* <Link to={"/trend"} className='flex items-center gap-2 cursor-pointer'>
                         <div className={`text-3xl ${color === "light" ? "text-black" : "text-white"}`}>
                             {
                                 location.pathname === "/trend" ? <span className='text-2xl'><BsGraphUpArrow /></span> : <span className='text-2xl'><GoGraph /></span>
@@ -132,7 +132,7 @@ function LeftSidebar() {
                                 location.pathname === "/trend" ? <span className='text-lg font-bold'>Trends</span> : <span className='text-lg'>Trends</span>
                             }</div>
                         </div>
-                    </Link>
+                    </Link> */}
 
                     {/* //create  */}
 
@@ -208,7 +208,7 @@ function LeftSidebar() {
                     location.pathname === "/setting" ? <IoSettingsSharp /> : <IoSettingsOutline />
                 }
                 {
-                    setting && <div className={`absolute bottom-0 left-10 w-32 ${color === "light" ? "bg-white" : "bg-slate-800 shadow-slate-500"} shadow-md rounded-md flex flex-col items-center justify-center`}>
+                    setting && <div className={`absolute bottom-0 left-10 w-32 ${color === "light" ? "bg-white" : "bg-slate-800 shadow-slate-500"} shadow-md rounded-md flex flex-col items-center justify-center z-30`}>
 
                         <div className='text-xl py-2' onClick={hendleLogout}>Logout</div>
 
