@@ -28,6 +28,7 @@ const ContextProvider = ({ children }) => {
     const [profiledataLoading, setprofiledataloading] = useState(false)
     const [followersShow, setfollowersShow] = useState(false)
     const [followingShow, setfollowingShow] = useState(false)
+    const [comment, setcomment] = useState("")
 
     const getUser = async () => {
         try {
@@ -228,7 +229,7 @@ const ContextProvider = ({ children }) => {
         }
       }
     return (
-        <StoreContext.Provider value={{ url, user, setuser, getUser, color, setcolor, showcomment, setshowcomment, ispopup, setpopup, commentpopup, setcommentpopup, showCreate, setshowCreate, selectPostcomment, setselectPostcomment, addComment, like, dislike, bookmark, allpost, setallpost, profiledata, userData, setuserData, hendleSuggestion, suggestionUser, setsuggestionuser, follewing, setfollewing, followers, setfollowers, messages, setmessages, shownotification, setshownotification, notificationCount, setnotificationCount, popData, setpopData, deletePost, hendletoFollow, getNotification, notificationLength, setnotificationLength, lengthCount, setlengthCount, allComment, setAllcomment, getPost, setgetpost, profiledataLoading, setprofiledataloading, followersShow, setfollowersShow, followingShow, setfollowingShow }}>
+        <StoreContext.Provider value={{ url, user, setuser, getUser, color, setcolor, showcomment, setshowcomment, ispopup, setpopup, commentpopup, setcommentpopup, showCreate, setshowCreate, selectPostcomment, setselectPostcomment, addComment, like, dislike, bookmark, allpost, setallpost, profiledata, userData, setuserData, hendleSuggestion, suggestionUser, setsuggestionuser, follewing, setfollewing, followers, setfollowers, messages, setmessages, shownotification, setshownotification, notificationCount, setnotificationCount, popData, setpopData, deletePost, hendletoFollow, getNotification, notificationLength, setnotificationLength, lengthCount, setlengthCount, allComment, setAllcomment, getPost, setgetpost, profiledataLoading, setprofiledataloading, followersShow, setfollowersShow, followingShow, setfollowingShow, comment, setcomment }}>
             {children}
         </StoreContext.Provider>
     )

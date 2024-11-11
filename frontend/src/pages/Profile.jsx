@@ -29,7 +29,6 @@ function Profile() {
   }
 
   const hendleProfile = (id) => {
-    console.log(id)
     naviget(`/${id}/profile`)
     profiledata(id)
 }
