@@ -16,7 +16,7 @@ function ShowComment({ selectPostcomment }) {
 
   const hendleComment = async () => {
     setloading(true)
-    const data = await addComment(selectPostcomment?._id)
+    const data = await addComment(selectPostcomment?._id, comment)
     if (data.success) {
       setloading(false)
       setAllcomment([data.newComment, ...allComment])
