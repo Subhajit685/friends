@@ -16,8 +16,9 @@ import { PiUserCircleThin } from "react-icons/pi";
 
 
 function Showpost({ post }) {
-    const { color, showcomment, setshowcomment, ispopup, setpopup, selectPostcomment, setselectPostcomment, addComment, user, like, dislike, bookmark, allComment, setAllcomment, popData, setpopData, deletePost, comment, setcomment } = useContext(StoreContext)
+    const { color, showcomment, setshowcomment, ispopup, setpopup, selectPostcomment, setselectPostcomment, addComment, user, like, dislike, bookmark, allComment, setAllcomment, popData, setpopData, deletePost } = useContext(StoreContext)
 
+    const [comment, setcomment] = useState("")
     const [loading, setloading] = useState(false)
     const [showLike, setshowLike] = useState([])
     const [showbookmark, setshowbookmark] = useState(user?.bookmarks.includes(post._id) || false)

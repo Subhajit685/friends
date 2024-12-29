@@ -9,8 +9,9 @@ import { PiUserCircleThin } from 'react-icons/pi'
 
 
 function ShowComment({ selectPostcomment }) {
-  const { color, setshowcomment, showcomment, ispopup, setpopup, commentpopup, setcommentpopup, addComment, url, comment, setcomment, user, setpopData, allComment, setAllcomment } = useContext(StoreContext)
+  const { color, setshowcomment, showcomment, ispopup, setpopup, commentpopup, setcommentpopup, addComment, url, user, setpopData, allComment, setAllcomment } = useContext(StoreContext)
 
+  const [comment, setcomment] = useState("")
   const [loading, setloading] = useState(false)
   const [postUserData, setpostuserData] = useState({})
 
